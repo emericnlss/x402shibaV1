@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - x402Shiba Universe</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #E5E7EB;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(59,130,246,0.25), transparent 60%),
+        var(--bg-image) center/cover no-repeat;
+      z-index: -1;
+    }
+
+    .card {
+      background: #0f1115;
+      border: 2px solid #3B82F6;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      width: min(92vw, 420px);
+      text-align: center;
+      padding: 40px 30px;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #9CA3AF;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .wallet {
+      margin-top: 16px;
+      color: #3B82F6;
+      font-weight: 600;
+    }
+
+    .return {
+      display: inline-block;
+      background: #3B82F6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .return:hover {
+      background: #2563EB;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <div class="card">
+    <h1>Welcome to x402Shiba Universe</h1>
+    <p>You’ve successfully completed all tasks and connected your wallet.<br>
+    The x402Shiba Universe awaits you 🐕✨</p>
+
+    <button class="return" onclick="window.location.href='index.html'">← Back to main page</button>
+    <div id="walletInfo" class="wallet"></div>
+  </div>
+
+  <script>
+    const state = JSON.parse(localStorage.getItem('x402shiba_tasks_v1') || '{}');
+    if (state.wallet) {
+      const short = state.wallet.slice(0, 6) + '...' + state.wallet.slice(-4);
+      document.getElementById('walletInfo').textContent = `Connected wallet: ${short}`;
+    }
+  </script>
+</body>
+</html>

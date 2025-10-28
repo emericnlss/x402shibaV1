@@ -1,0 +1,326 @@
+:root{
+  /* Palette x402 Shiba (modifiable) */
+  --blue: #6EC1FF;         /* bleu bannière */
+  --gold: #FFD34D;         /* doré doux */
+  --gold-strong: #FFC300;  /* doré accent */
+  --black: #0C0F14;        /* noir profond */
+  --card: #12151C;         /* fond carte */
+  --text: #EAF2FF;         /* texte clair */
+  --muted: #A9B6C7;
+
+  --success: #16a34a;      /* vert validation */
+  --success-bg: rgba(22,163,74,0.12);
+
+  /* Ombres & rayons */
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --radius: 18px;
+
+  /* Images (remplace ces URL par tes PNG) */
+  --bg-image: url('assets/background.png'); /* fond pixel ciel/nuages */
+}
+
+/* Reset simple */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  color: var(--text);
+  background: var(--black);
+  overflow: hidden;
+}
+
+/* Fond avec ton PNG */
+.bg-overlay{
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(110,193,255,0.25), transparent 60%),
+    var(--bg-image) center/cover no-repeat;
+  filter: saturate(1.1);
+  z-index: -2;
+}
+
+/* Léger motif doré façon dApp */
+.bg-overlay::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(transparent 95%, rgba(255,195,0,0.08) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(255,195,0,0.08) 96%);
+  background-size: 28px 28px, 28px 28px;
+  opacity:.25;
+  pointer-events:none;
+}
+
+.wrap{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  gap:20px;
+}
+
+/* Titre / logo */
+.brand img{
+  height: 64px;            /* ajuste quand tu mettras ton PNG */
+  display:block;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.35));
+}
+
+/* Carte centrale */
+.card{
+  width:min(92vw, 520px);
+  background: linear-gradient(180deg, rgba(18,21,28,.92), rgba(18,21,28,.9));
+  border:1px solid rgba(255,211,77,.35);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 22px;
+  backdrop-filter: blur(4px);
+}
+
+/* Headline (PNG) */
+.headline{
+  margin:0 0 8px 0;
+  display:flex;
+  justify-content:center;
+}
+.headline-img{
+  height: 36px;            /* remplace par ton PNG de "Welcome to x402" */
+  object-fit: contain;
+}
+.subtitle{
+  margin:0 0 18px 0;
+  text-align:center;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Liste des tâches */
+.tasks{
+  list-style:none;
+  padding:0;
+  margin:0 0 18px 0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.task{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  background: rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+.task-label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3B82F6; /* bleu principal */
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+}
+
+/* Boutons */
+.btn{
+  appearance:none;
+  border:2px solid var(--gold-strong);
+  background: #0f131a;
+  color: var(--text);
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .06s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+.btn:hover{
+  transform: translateY(-1px);
+  background: #141a23;
+  box-shadow: 0 8px 18px rgba(0,0,0,.35);
+}
+.btn:active{
+  transform: translateY(0);
+}
+
+/* Etat validé (vert outline) */
+.btn.done{
+  border-color: var(--success);
+  background: var(--success-bg);
+  color: #bbf7d0; /* vert pâle lisible */
+  box-shadow: 0 0 0 4px rgba(22,163,74,.15), 0 8px 18px rgba(0,0,0,.35);
+}
+
+/* Next */
+.next{
+  width:100%;
+  margin-top: 6px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-strong));
+  color:#151515;
+  border-color: var(--gold-strong);
+}
+.next:disabled{
+  filter: grayscale(.5) brightness(.8);
+  cursor:not-allowed;
+  background: #2b2f37;
+  color:#8e98a7;
+  border-color: #3a404a;
+}
+.enter {
+  display: block;
+  margin: 10px auto 0 auto;
+  width: 100%;
+  background: linear-gradient(180deg, var(--gold), var(--gold-strong));
+  color: #151515;
+  border-color: var(--gold-strong);
+  text-align: center;
+}
+
+.enter:disabled {
+  filter: grayscale(.5) brightness(.8);
+  cursor: not-allowed;
+  background: #2b2f37;
+  color: #8e98a7;
+  border-color: #3a404a;
+}
+/* Nouveau style x402Shiba Universe (bleu) */
+
+.card {
+  background: #0f1115;
+  border: 2px solid #3B82F6; /* bleu clair */
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.headline {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #9CA3AF;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.task {
+  background: #121418;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.btn {
+  background: #3B82F6;
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: #2563EB;
+}
+
+.btn.done {
+  background: transparent;
+  border: 2px solid #22C55E;
+  color: #22C55E;
+}
+
+.enter {
+  background: #3B82F6;
+  border: none;
+  color: #fff;
+  width: 100%;
+  margin-top: 14px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.enter:disabled {
+  background: #1E293B;
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+.wallet-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.wallet-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: #121418;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.wallet-input input:focus {
+  border-color: #3B82F6;
+}
+/* === Responsive mobile adjustments === */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+    padding: 22px 18px;
+  }
+
+  .headline {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .wallet-input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wallet-input input {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .enter {
+    padding: 14px;
+    font-size: 16px;
+  }
+}

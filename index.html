@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>x402 Shiba</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <main class="wrap">
+    <header class="brand">
+      <img id="brandLogo" src="assets/title.png" alt="x402 Shiba" />
+    </header>
+
+    <section class="card">
+      <h1 class="headline">Welcome to x402Shiba Universe</h1>
+      <p class="subtitle">Complete the tasks to enter</p>
+
+      <ul class="tasks">
+        <li class="task">
+          <div class="task-label">
+            <span class="dot"></span>
+            <span>Follow @x402Shiba</span>
+          </div>
+          <button class="btn task-btn" data-key="follow" data-link="https://twitter.com/intent/follow?screen_name=x402Shiba">Follow</button>
+        </li>
+
+        <li class="task">
+          <div class="task-label">
+            <span class="dot"></span>
+            <span>Like &amp; Retweet</span>
+          </div>
+          <button class="btn task-btn" data-key="interact" data-link="https://twitter.com/explore">Interact</button>
+        </li>
+
+        <li class="task">
+          <div class="task-label">
+            <span class="dot"></span>
+            <span>Enter your wallet address</span>
+          </div>
+          <div class="wallet-input">
+            <input id="walletInput" type="text" placeholder="0x..." maxlength="42">
+            <button id="walletBtn" class="btn wallet-btn" data-key="wallet">Done</button>
+          </div>
+        </li>
+      </ul>
+
+      <button id="enterBtn" class="btn enter" disabled>Enter</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
