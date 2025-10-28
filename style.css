@@ -324,3 +324,14 @@ body{
     font-size: 16px;
   }
 }
+.dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3B82F6; /* ton bleu principal */
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 2px;
+}
