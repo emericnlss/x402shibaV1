@@ -335,3 +335,20 @@ body{
   vertical-align: middle;
   margin-top: 2px;
 }
+.task-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1; /* ← empêche le texte de gonfler la ligne */
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  display: inline-block;
+  align-self: center; /* ← centre verticalement par rapport au texte */
+}
