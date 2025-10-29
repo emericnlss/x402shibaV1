@@ -324,24 +324,29 @@ body{
     font-size: 16px;
   }
 }
+
 .task-label {
   display: flex;
   align-items: center;
   gap: 10px;
-  line-height: 0; /* empêche le texte de gonfler la hauteur du bloc */
+  line-height: normal;
+  transform: translateZ(0); /* annule la mise à l’échelle subpixel */
 }
 
 .dot {
+  position: relative;
   flex-shrink: 0;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: #3B82F6;
   box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
-  display: inline-block;
-  transform: translateY(1px);
+  display: block;
+  transform: none;
   aspect-ratio: 1 / 1;
-  -webkit-transform: translateZ(0); /* force le rendu GPU */
+  isolation: isolate;           /* isole le sous-pixel rendering */
+  backface-visibility: hidden;  /* corrige la distorsion GPU */
+  will-change: transform;       /* stabilise le rendu */
 }
 
 .task {
