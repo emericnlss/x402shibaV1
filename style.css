@@ -352,3 +352,18 @@ body{
   display: inline-block;
   align-self: center; /* ← centre verticalement par rapport au texte */
 }
+.dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  display: inline-block;
+  align-self: center;
+  transform: translateY(1px);
+  /* Forcer le moteur à conserver le ratio pixel-perfect */
+  aspect-ratio: 1 / 1;
+  image-rendering: pixelated;
+}
+
