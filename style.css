@@ -348,3 +348,12 @@ body{
   display: block; /* <- plus inline-block : bloque les effets du texte */
   transform: translateY(1px);
 }
+.task {
+  min-height: 44px; /* crée une zone suffisante pour le dot et le texte */
+  display: flex;
+  align-items: center;
+}
+.wallet-input {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
