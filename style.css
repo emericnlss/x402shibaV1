@@ -332,21 +332,19 @@ body{
 }
 
 .task-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 10px;
-  line-height: 0; /* on annule le line-height hérité */
-  vertical-align: middle;
+  line-height: normal; /* garde le line-height du texte */
 }
 
 .dot {
   flex-shrink: 0;
   width: 10px;
-  height: 10px;
+  aspect-ratio: 1 / 1; /* verrouille le cercle */
   border-radius: 50%;
   background: #3B82F6;
   box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
-  display: inline-block;
-  margin-top: 1px; /* ajuste verticalement */
-  aspect-ratio: 1 / 1;
+  display: block; /* <- plus inline-block : bloque les effets du texte */
+  transform: translateY(1px);
 }
